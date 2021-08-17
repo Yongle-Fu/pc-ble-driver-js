@@ -1,6 +1,6 @@
 {
-  "name": "pc-ble-driver-js",
-  "version": "2.7.2",
+  "name": "cmsn-pc-ble-driver-js",
+  "version": "2.7.3",
   "description": "Javascript bindings for pc-ble-driver",
   "main": "index.js",
   "scripts": {
@@ -9,9 +9,8 @@
     "deploy-docs": "gh-pages -d docs",
     "clean-prebuilt": "node-pre-gyp clean",
     "package-prebuilt": "node-pre-gyp package",
-    "publish-prebuilt": "node-pre-gyp-github publish",
-    "publish-all-prebuilt": "node scripts/publish-all-prebuilt.js",
-    "fetch-prebuilt": "node-pre-gyp install --fallback-to-build=false",
+    "pack-all": "node scripts/pack-all.js",
+    "fetch-prebuilt": "node-pre-gyp install --fallback-to-build=true",
     "install": "npm run fetch-prebuilt || npm run build",
     "test": "jest --config config/jest-unit.json",
     "system-tests": "bash scripts/system-tests.sh",
@@ -19,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NordicSemiconductor/pc-ble-driver-js.git"
+    "url": "https://github.com/Yongle-Fu/pc-ble-driver-js.git"
   },
   "binary": {
     "module_name": "pc-ble-driver-js-sd_api_v5",
     "module_path": "./build/Release",
-    "host": "https://github.com/NordicSemiconductor/pc-ble-driver-js/releases/download/",
+    "host": "https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/node-prebuild/{module_name}-sd_api_v5/",
     "remote_path": "v{version}"
   },
   "author": "Nordic Semiconductor ASA",
@@ -54,9 +53,8 @@
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "debug": "4.1.0",
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb": "^17.1.1",
+    "debug": "4.3.2",
+    "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",

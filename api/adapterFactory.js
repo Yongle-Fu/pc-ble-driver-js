@@ -38,14 +38,13 @@
 
 const os = require('os');
 
-const _bleDriverV2 = require('bindings')('pc-ble-driver-js-sd_api_v2');
 const _bleDriverV5 = require('bindings')('pc-ble-driver-js-sd_api_v5');
 
 const Adapter = require('./adapter');
 const logLevel = require('./util/logLevel');
 const EventEmitter = require('events');
 
-const _bleDrivers = { v2: _bleDriverV2, v5: _bleDriverV5 };
+const _bleDrivers = { v5: _bleDriverV5 };
 const _singleton = Symbol('Ensure that only one instance of AdapterFactory ever exists.');
 
 /** @constant {number} Update interval, in milliseconds, at which PC shall be checked for new connected adapters. */

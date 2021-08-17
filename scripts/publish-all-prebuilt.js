@@ -46,29 +46,37 @@ const spawn = require('child_process').spawn;
  */
 
 const BUILD_CONFIGS = [
+    // {
+    //     npm_config_runtime: 'node',
+    //     npm_config_target: '12.18.3',
+    // },
     {
         npm_config_runtime: 'node',
-        npm_config_target: '10.15.1',
+        npm_config_target: '14.16.0',
     },
-    {
-        npm_config_runtime: 'node',
-        npm_config_target: '8.15.0',
-    },
-    {
-        npm_config_runtime: 'electron',
-        npm_config_target: '2.0.17',
-        npm_config_disturl: 'https://atom.io/download/electron',
-    },
-    {
-        npm_config_runtime: 'electron',
-        npm_config_target: '4.0.6',
-        npm_config_disturl: 'https://atom.io/download/electron',
-    },
-    {
-        npm_config_runtime: 'electron',
-        npm_config_target: '2.0.17',
-        npm_config_disturl: 'https://atom.io/download/electron',
-    },
+    // {
+    //     npm_config_runtime: 'node',
+    //     npm_config_target: '10.15.1',
+    // },
+    // {
+    //     npm_config_runtime: 'node',
+    //     npm_config_target: '8.15.0',
+    // },
+    // {
+    //     npm_config_runtime: 'electron',
+    //     npm_config_target: '2.0.17',
+    //     npm_config_disturl: 'https://atom.io/download/electron',
+    // },
+    // {
+    //     npm_config_runtime: 'electron',
+    //     npm_config_target: '4.0.6',
+    //     npm_config_disturl: 'https://atom.io/download/electron',
+    // },
+    // {
+    //     npm_config_runtime: 'electron',
+    //     npm_config_target: '2.0.17',
+    //     npm_config_disturl: 'https://atom.io/download/electron',
+    // },
 ];
 
 function runNpm(args, envVars) {
@@ -117,7 +125,7 @@ function buildAndPublishAll(configs) {
         prev.then(() => cleanPrebuilt(config))
             .then(() => prebuild(config))
             .then(() => packagePrebuilt(config))
-            .then(() => publishPrebuilt(config))
+            // .then(() => publishPrebuilt(config))
     ), Promise.resolve());
 }
 
