@@ -5,3 +5,4 @@ build
 jest.json
 docs
 /pc-ble-driver
+/prebuilds

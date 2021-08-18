@@ -3,24 +3,24 @@
 const spawn = require('child_process').spawn;
 
 const BUILD_CONFIGS = [
-    {
-        npm_config_runtime: 'node',
-        npm_config_target: '12.18.3',
-    },
+    // {
+    //     npm_config_runtime: 'node',
+    //     npm_config_target: '12.18.3',
+    // },
     {
         npm_config_runtime: 'node',
         npm_config_target: '14.16.0',
     },
-    {
-        npm_config_runtime: 'electron',
-        npm_config_target: '7.3.3',
-        npm_config_disturl: 'https://atom.io/download/electron',
-    },
-    {
-        npm_config_runtime: 'electron',
-        npm_config_target: '8.2.5',
-        npm_config_disturl: 'https://atom.io/download/electron',
-    },
+    // {
+    //     npm_config_runtime: 'electron',
+    //     npm_config_target: '7.3.3',
+    //     npm_config_disturl: 'https://atom.io/download/electron',
+    // },
+    // {
+    //     npm_config_runtime: 'electron',
+    //     npm_config_target: '8.2.5',
+    //     npm_config_disturl: 'https://atom.io/download/electron',
+    // },
 ];
 
 function runNpm(args, envVars) {
@@ -44,14 +44,14 @@ function runNpm(args, envVars) {
     });
 }
 
-// function cleanPrebuilt(config) {
-//     console.log('Removing any locally existing .node binaries');
-//     return runNpm(['run', 'clean-prebuilt'], config);
-// }
+function cleanPrebuilt(config) {
+    console.log('Removing any locally existing .node binaries');
+    return runNpm(['run', 'clean-prebuilt'], config);
+}
 
 function prebuild(config) {
     console.log(`Building ${JSON.stringify(config)}`);
-    return runNpm(['install'], config);
+    return runNpm(['run', 'build'], config);
 }
 
 function packagePrebuilt(config) {
@@ -61,7 +61,8 @@ function packagePrebuilt(config) {
 
 function buildAndPublishAll(configs) {
     return configs.reduce((prev, config) => (
-        prev.then(() => prebuild(config))
+        prev.then(() => cleanPrebuilt(config))
+            .then(() => prebuild(config))
             .then(() => packagePrebuilt(config))
     ), Promise.resolve());
 }

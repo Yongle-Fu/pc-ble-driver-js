@@ -79,7 +79,7 @@ endif()
 # SoftDevices for features for nRF52.
 #
 # Compile a node library with SD API v2 for nRF51, and one with v5 for nRF52.
-foreach(SD_API_VER "2" "5")
+foreach(SD_API_VER "5")
     set(CURRENT_TARGET pc-ble-driver-js-sd_api_v${SD_API_VER})
 
     add_library(${CURRENT_TARGET} SHARED ${SOURCE_FILES} ${UECC_SOURCE_FILES} ${PLATFORM_SOURCE_FILES})

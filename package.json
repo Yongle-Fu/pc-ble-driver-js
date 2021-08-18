@@ -1,6 +1,6 @@
 {
-  "name": "cmsn-pc-ble-driver-js",
-  "version": "2.7.3",
+  "name": "cmsn-nrf-ble-driver-js",
+  "version": "2.7.2",
   "description": "Javascript bindings for pc-ble-driver",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,13 @@
     "deploy-docs": "gh-pages -d docs",
     "clean-prebuilt": "node-pre-gyp clean",
     "package-prebuilt": "node-pre-gyp package",
-    "pack-all": "node scripts/pack-all.js",
-    "fetch-prebuilt": "node-pre-gyp install --fallback-to-build=true",
+    "publish-prebuilt": "node-pre-gyp-github publish",
+    "fetch-prebuilt": "node-pre-gyp install --fallback-to-build=false",
     "install": "npm run fetch-prebuilt || npm run build",
     "test": "jest --config config/jest-unit.json",
     "system-tests": "bash scripts/system-tests.sh",
-    "docs": "jsdoc api -t node_modules/minami -R README.md -d docs -c .jsdoc.json"
+    "docs": "jsdoc api -t node_modules/minami -R README.md -d docs -c .jsdoc.json",
+    "pack-all": "node scripts/pack-all"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,8 @@
   },
   "binary": {
     "module_name": "pc-ble-driver-js-sd_api_v5",
-    "module_path": "./build/Release",
-    "host": "https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/node-prebuild/{module_name}-sd_api_v5/",
+    "module_path": "./build/Release/",
+    "host": "https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/node-prebuild/cmsn-nrf-ble-driver-js/",
     "remote_path": "v{version}"
   },
   "author": "Nordic Semiconductor ASA",
@@ -67,7 +68,8 @@
     "jshint": "^2.10.2",
     "minami": "^1.2.3",
     "node-pre-gyp-github": "1.4.3",
-    "nrf-device-setup": "^0.6.5"
+    "nrf-device-setup": "^0.6.5",
+    "prebuild": "^10.0.1"
   },
   "files": [
     "api/",
